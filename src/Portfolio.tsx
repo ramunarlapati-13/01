@@ -285,36 +285,60 @@ export default function Portfolio() {
                     </svg>
                     <h2 className="section-title">Projects Showcase</h2>
                     <div className="project-grid">
-                        <div className="project-card glass-card">
-                            <img src="https://placehold.co/600x400/0A0E27/00D9FF?text=Automatic+Exhaust+Fan&font=montserrat"
-                                alt="Automatic Exhaust Fan Project" />
+                        <div className="project-card glass-card" style={{ transitionDelay: '0ms' }}>
+                            <div className="card-image-wrapper">
+                                <img src="https://placehold.co/600x400/0A0E27/00D9FF?text=Automatic+Exhaust+Fan&font=montserrat"
+                                    alt="Automatic Exhaust Fan Project" />
+                                <div className="scanline"></div>
+                                <div className="card-actions">
+                                    <button className="view-btn">View Project</button>
+                                </div>
+                            </div>
                             <div className="project-info">
                                 <h3>Automatic Exhaust Fan</h3>
                                 <p>An Arduino-based smart system that monitors air quality and automatically controls an exhaust
                                     fan.</p>
                             </div>
                         </div>
-                        <div className="project-card glass-card">
-                            <img src="https://placehold.co/600x400/1A1F3A/00FF88?text=ColorOhm+Website&font=montserrat"
-                                alt="ColorOhm Website Project" />
+                        <div className="project-card glass-card" style={{ transitionDelay: '150ms' }}>
+                            <div className="card-image-wrapper">
+                                <img src="https://placehold.co/600x400/1A1F3A/00FF88?text=ColorOhm+Website&font=montserrat"
+                                    alt="ColorOhm Website Project" />
+                                <div className="scanline"></div>
+                                <div className="card-actions">
+                                    <button className="view-btn">View Project</button>
+                                </div>
+                            </div>
                             <div className="project-info">
                                 <h3>ColorOhm Website</h3>
                                 <p>A web application for electronics enthusiasts to easily calculate resistor values from color
                                     codes.</p>
                             </div>
                         </div>
-                        <div className="project-card glass-card">
-                            <img src="https://placehold.co/600x400/0A0E27/FF6B35?text=Budget+Buddy&font=montserrat"
-                                alt="Budget Buddy Project" />
+                        <div className="project-card glass-card" style={{ transitionDelay: '300ms' }}>
+                            <div className="card-image-wrapper">
+                                <img src="https://placehold.co/600x400/0A0E27/FF6B35?text=Budget+Buddy&font=montserrat"
+                                    alt="Budget Buddy Project" />
+                                <div className="scanline"></div>
+                                <div className="card-actions">
+                                    <button className="view-btn">View Project</button>
+                                </div>
+                            </div>
                             <div className="project-info">
                                 <h3>Budget Buddy</h3>
                                 <p>A user-friendly application to help manage personal finances and track spending habits
                                     effectively.</p>
                             </div>
                         </div>
-                        <div className="project-card glass-card">
-                            <img src="https://placehold.co/600x400/1A1F3A/00D9FF?text=AI+Chatbot&font=montserrat"
-                                alt="AI Chatbot Project" />
+                        <div className="project-card glass-card" style={{ transitionDelay: '450ms' }}>
+                            <div className="card-image-wrapper">
+                                <img src="https://placehold.co/600x400/1A1F3A/00D9FF?text=AI+Chatbot&font=montserrat"
+                                    alt="AI Chatbot Project" />
+                                <div className="scanline"></div>
+                                <div className="card-actions">
+                                    <button className="view-btn">View Project</button>
+                                </div>
+                            </div>
                             <div className="project-info">
                                 <h3>AI Chatbot</h3>
                                 <p>A web-based chatbot powered by a GPT open-source model and the Hugging Face API.</p>

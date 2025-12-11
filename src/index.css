@@ -397,7 +397,7 @@ nav a.active::after {
     background: var(--glass-bg);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-radius: 16px;
+    border-radius: 0 24px 0 24px;
     box-shadow: 0 8px 32px 0 var(--shadow-color);
     border: 1px solid var(--glass-border);
     transition: all 0.3s ease;
@@ -444,15 +444,17 @@ nav a.active::after {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid var(--accent-blue);
+    border-radius: 0 40px 0 40px;
+    border: 3px solid var(--accent-blue);
     box-shadow: 0 10px 30px var(--shadow-color), 0 0 40px var(--glow-blue);
     transition: all 0.3s ease;
 }
 
 .about-photo img:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 15px 40px var(--shadow-color), 0 0 60px var(--glow-blue);
+    border-color: var(--accent-green);
+    border-radius: 40px 0 40px 0;
 }
 
 .about-text {
@@ -498,15 +500,116 @@ nav a.active::after {
     height: 100%;
 }
 
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    border-radius: 0 24px 0 0;
+}
+
 .project-card img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .project-card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    filter: brightness(0.7) contrast(1.2);
+}
+
+/* Scanline Effect */
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(0, 217, 255, 0.2),
+            rgba(0, 255, 136, 0.2),
+            transparent);
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.project-card:hover .scanline {
+    animation: scan 1.5s linear infinite;
+    opacity: 1;
+}
+
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(200%);
+    }
+}
+
+/* Card Actions Overlay */
+.card-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: linear-gradient(to top, rgba(10, 14, 39, 0.9), transparent);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 3;
+}
+
+.project-card:hover .card-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.view-btn {
+    padding: 0.6rem 1.5rem;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+}
+
+.view-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.4), transparent);
+    transition: left 0.4s;
+}
+
+.view-btn:hover {
+    background: var(--accent-blue);
+    color: var(--primary-dark);
+    box-shadow: 0 0 15px var(--glow-blue);
+}
+
+.view-btn:hover::before {
+    left: 100%;
 }
 
 .project-info {
@@ -613,6 +716,7 @@ nav a.active::after {
     /* Extends .glass-card */
     padding: 20px 30px;
     position: relative;
+    border-radius: 0 24px 0 24px;
 }
 
 .timeline-content h3 {
@@ -635,6 +739,7 @@ nav a.active::after {
     /* Extends .glass-card */
     padding: 2rem;
     text-align: center;
+    border-radius: 0 24px 0 24px;
 }
 
 .arsenal-card h3 {

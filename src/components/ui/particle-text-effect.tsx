@@ -182,9 +182,20 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, fontSize = 100 }: Pa
         offscreenCanvas.height = canvas.height
         const offscreenCtx = offscreenCanvas.getContext("2d")!
 
+        // Adjust font size to fit canvas width
+        let currentFontSize = fontSize
+        offscreenCtx.font = `bold ${currentFontSize}px Arial`
+        let textMetrics = offscreenCtx.measureText(word)
+        const maxWidth = canvas.width * 0.9 // 90% of screen width
+
+        while (textMetrics.width > maxWidth && currentFontSize > 10) {
+            currentFontSize -= 2
+            offscreenCtx.font = `bold ${currentFontSize}px Arial`
+            textMetrics = offscreenCtx.measureText(word)
+        }
+
         // Draw text
         offscreenCtx.fillStyle = "white"
-        offscreenCtx.font = `bold ${fontSize}px Arial`
         offscreenCtx.textAlign = "center"
         offscreenCtx.textBaseline = "middle"
         offscreenCtx.fillText(word, canvas.width / 2, canvas.height / 2)
@@ -330,7 +341,17 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, fontSize = 100 }: Pa
         }
 
         setCanvasSize()
-        window.addEventListener("resize", setCanvasSize)
+
+        let resizeTimeout: any
+        const handleResize = () => {
+            setCanvasSize()
+            clearTimeout(resizeTimeout)
+            resizeTimeout = setTimeout(() => {
+                nextWord(words[wordIndexRef.current], canvas)
+            }, 200)
+        }
+
+        window.addEventListener("resize", handleResize)
 
         // Initialize with first word
         nextWord(words[0], canvas)
@@ -344,8 +365,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, fontSize = 100 }: Pa
             mouseRef.current.isPressed = true
             mouseRef.current.isRightClick = e.button === 2
             const rect = canvas.getBoundingClientRect()
-            mouseRef.current.x = e.clientX - rect.left
-            mouseRef.current.y = e.clientY - rect.top
+            const scaleX = canvas.width / rect.width
+            const scaleY = canvas.height / rect.height
+            mouseRef.current.x = (e.clientX - rect.left) * scaleX
+            mouseRef.current.y = (e.clientY - rect.top) * scaleY
         }
 
         const handleMouseUp = () => {
@@ -355,8 +378,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, fontSize = 100 }: Pa
 
         const handleMouseMove = (e: MouseEvent) => {
             const rect = canvas.getBoundingClientRect()
-            mouseRef.current.x = e.clientX - rect.left
-            mouseRef.current.y = e.clientY - rect.top
+            const scaleX = canvas.width / rect.width
+            const scaleY = canvas.height / rect.height
+            mouseRef.current.x = (e.clientX - rect.left) * scaleX
+            mouseRef.current.y = (e.clientY - rect.top) * scaleY
         }
 
         const handleContextMenu = (e: MouseEvent) => {
@@ -369,7 +394,8 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, fontSize = 100 }: Pa
         canvas.addEventListener("contextmenu", handleContextMenu)
 
         return () => {
-            window.removeEventListener("resize", setCanvasSize)
+            window.removeEventListener("resize", handleResize)
+            clearTimeout(resizeTimeout)
             if (animationRef.current) {
                 cancelAnimationFrame(animationRef.current)
             }
@@ -381,7 +407,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, fontSize = 100 }: Pa
     }, [])
 
     return (
-        <div className="flex flex-col items-center justify-center w-full h-full p-4">
+        <div className="flex flex-col items-center justify-center w-full h-full">
             <canvas
                 ref={canvasRef}
                 className="rounded-lg"
