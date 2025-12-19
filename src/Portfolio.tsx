@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { ParticleTextEffect } from './components/ui/particle-text-effect';
+import { SocialIcons } from './components/ui/social-icons';
+import InteractiveBentoGallery from './components/ui/interactive-bento-gallery';
+import { Certifications } from './components/ui/certifications';
+import { RandomColorHoverText } from './components/ui/random-color-text';
+
 
 const LottiePlayer = 'lottie-player' as any;
 
@@ -226,11 +230,13 @@ export default function Portfolio() {
 
             <main>
                 <section id="home">
-                    <div className="w-full h-screen flex items-center justify-center">
-                        <ParticleTextEffect
-                            words={["RAMUNARLAPATI", "ELECTRICAL AND ELECTRONICS ENGINEER"]}
-                            fontSize={80}
-                        />
+                    <div className="w-full h-screen flex flex-col items-center justify-center text-center px-4">
+                        <div className="mb-6 w-full max-w-4xl">
+                            <RandomColorHoverText text="RAMUNARLAPATI" />
+                        </div>
+                        <h2 className="text-xl md:text-3xl text-[var(--text-secondary)] font-medium tracking-widest uppercase">
+                            Electrical and Electronics Engineer
+                        </h2>
                     </div>
                     <div className="scroll-indicator">
                         <span>Scroll</span>
@@ -390,6 +396,7 @@ export default function Portfolio() {
                 <section id="extra-curricular" className="container fade-in-section">
                     <h2 className="section-title">Extra Curricular</h2>
                     <div className="project-grid">
+
                         <div className="project-card glass-card">
                             <div className="project-info">
                                 <h3>Technical Content Creation</h3>
@@ -411,6 +418,44 @@ export default function Portfolio() {
                     </div>
                 </section>
 
+                <section className="container fade-in-section mt-16 mb-16">
+                    <InteractiveBentoGallery
+                        mediaItems={[
+                            {
+                                id: 1,
+                                type: "image",
+                                title: "Industrial Visit to Jocil Limited 🏭",
+                                desc: "Recently, I had the opportunity to visit Jocil Limited near Dokiparru as part of our industrial visit. It was an insightful experience where I got to explore the power generation plants and soap manufacturing units within the industry. This visit gave me a practical understanding of industrial processes, energy utilization, and automation systems, which play a vital role in modern manufacturing. Observing how theoretical concepts are implemented in real-time operations has deepened my interest in the field of Electrical and Electronics Engineering. Grateful to my institution and the company for providing this valuable learning experience and exposure to real-world industrial environments.",
+                                url: "/images/industrial-visit.jpg",
+                                span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+                            },
+                            {
+                                id: 2,
+                                type: "image",
+                                title: "Extension Program in Home Appliances",
+                                desc: "Led a hands-on workshop on 'Identification and Rectifications of Faults in Electrical Home Appliances' at Andhra Loyola Institute of Engineering and Technology. This extension program empowered students with practical troubleshooting skills for common household devices.",
+                                url: "/images/extension-program-2.jpg",
+                                span: "md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2",
+                            },
+                            {
+                                id: 3,
+                                type: "image",
+                                title: "Fault Identification & Rectification in Electrical Home Appliance",
+                                desc: "Demonstrating practical fault detection techniques during the Home Appliances extension program. Guided participants through circuit analysis and safe repair practices using real-world equipment.",
+                                url: "/images/extension-program-1.png",
+                                span: "md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2 ",
+                            },
+
+                        ]}
+                        title="Gallery Shots Collection"
+                        description="Drag and explore our curated collection of shots"
+                    />
+                </section>
+
+                <section id="certifications" className="container fade-in-section mb-16">
+                    <Certifications />
+                </section>
+
                 <section id="connect" className="fade-in-section">
                     <div className="container">
                         <h2 className="section-title">Connect With Me</h2>
@@ -419,37 +464,8 @@ export default function Portfolio() {
                                 <h3>Let's Build Something Amazing Together</h3>
                                 <p>I'm currently available for freelance work and open to discussing new projects. Whether you
                                     have a question or just want to say hi, my inbox is always open. I'll get back to you!</p>
-                                <div className="contact-details">
-                                    <a href="mailto:ramunarlapati@email.com">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                        </svg>
-                                        <span>ramunarlapati@email.com</span>
-                                    </a>
-                                    <a href="tel:+91 9912962427">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.02.74-.25 1.02l-2.2 2.2z"></path>
-                                        </svg>
-                                        <span>+91 99**9 6**27</span>
-                                    </a>
-                                    <a href="https://linkedin.com/in/ramunarlapati" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-7 5.57h-2.47v7.43H12v-7.43zm-1.24-1.87a1.49 1.49 0 1 0 0-2.98 1.49 1.49 0 0 0 0 2.98zm5.6 1.87h-2.37v3.54c0 .9.63 1.1 1.05 1.1.42 0 .97-.23.97-.23v2.03s-.7.34-1.63.34c-1.6 0-2.8-1-2.8-3.03v-3.75h-1.5v-2.1h1.5v-1.1c0-1.2.6-2.4 2.1-2.4h2.1v2.1z" />
-                                        </svg>
-                                        <span>linkedin</span>
-                                    </a>
-                                    <a href="https://github.com/ramunarlapati-13" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.95-.26 1.98-.4 3-.4s2.05.13 3 .4c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.82.58A12 12 0 0 0 12 0z" />
-                                        </svg>
-                                        <span>github</span>
-                                    </a>
-                                    <a href="https://t.me/ramunarlapati" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                        </svg>
-                                        <span>telegram</span>
-                                    </a>
+                                <div className="flex justify-center w-full mt-4">
+                                    <SocialIcons />
                                 </div>
                             </div>
                             <div className="connect-lottie">

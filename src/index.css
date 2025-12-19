@@ -1551,3 +1551,54 @@ button,
         box-shadow: 0 0 10px var(--accent-green);
     }
 }
+
+.bg-300-percent {
+    background-size: 300% auto;
+}
+
+.animate-gradient {
+    animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.glass-text-title {
+    transition: all 0.4s ease;
+    cursor: default;
+}
+
+.glass-text-title:hover {
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px var(--accent-blue), 0 0 40px var(--accent-green);
+    filter: drop-shadow(0 0 5px rgba(0, 217, 255, 0.6));
+    letter-spacing: 0.02em;
+}
+
+.connect-content {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 2rem !important;
+}
+
+.connect-info {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.connect-info p {
+    max-width: 600px !important;
+}
