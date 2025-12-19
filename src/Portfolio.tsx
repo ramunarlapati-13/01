@@ -31,8 +31,12 @@ export default function Portfolio() {
         let delay = 0;
         const timeouts: number[] = [];
 
+        const isMobile = window.innerWidth < 768;
+
         bootMessages.forEach((msg) => {
-            const msgDelay = Math.random() * 100 + 50;
+            const baseDelay = isMobile ? 30 : 100;
+            const randomFactor = isMobile ? 20 : 50;
+            const msgDelay = Math.random() * baseDelay + randomFactor;
             delay += msgDelay;
 
             const timeout = setTimeout(() => {
@@ -43,7 +47,7 @@ export default function Portfolio() {
 
         const finishTimeout = setTimeout(() => {
             setLoading(false);
-        }, delay + 800);
+        }, delay + (isMobile ? 300 : 800));
         timeouts.push(finishTimeout);
 
         return () => timeouts.forEach(clearTimeout);
