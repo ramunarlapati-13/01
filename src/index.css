@@ -1193,6 +1193,7 @@ footer::before {
 }
 
 @media (max-width: 480px) {
+
     /* Narrower mobile phones */
     .container {
         padding: 4rem 1.25rem;
@@ -1207,7 +1208,7 @@ footer::before {
     .project-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .project-card .card-image-wrapper {
         height: 180px;
     }
@@ -1223,7 +1224,8 @@ footer::before {
         border-left: none;
         border-right: none;
         border-top: none;
-        background-color: rgba(26, 31, 58, 0.85); /* Slightly more opaque */
+        background-color: rgba(26, 31, 58, 0.85);
+        /* Slightly more opaque */
     }
 
     header.scrolled {
@@ -1234,7 +1236,7 @@ footer::before {
         border-right: none;
         max-width: none;
     }
-    
+
     header h1 {
         font-size: 1.2rem;
     }
@@ -1253,11 +1255,12 @@ footer::before {
     .timeline-item.right::after {
         left: 10px;
     }
-    
+
     .blob {
-        opacity: 0.4; /* Fade blobs better readability */
+        opacity: 0.4;
+        /* Fade blobs better readability */
     }
-    
+
     .arsenal-card {
         padding: 1.5rem;
     }
@@ -1314,15 +1317,21 @@ button,
 
 /* Hide cursor on touch devices */
 @media (hover: none) and (pointer: coarse) {
-    .cursor, .cursor-follower {
+
+    .cursor,
+    .cursor-follower {
         display: none;
     }
-    
+
     body {
         cursor: auto;
     }
 
-    a, button, .btn, .project-card, .glass-card {
+    a,
+    button,
+    .btn,
+    .project-card,
+    .glass-card {
         cursor: pointer;
     }
 }
